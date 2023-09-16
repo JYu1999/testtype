@@ -31,6 +31,10 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/menu/items", itemsRouter);
 
+app.get('/', (req, res) => {
+    res.status(200).json('Welcome, your app is working well');
+})
+
 /**
  * Server Activation
  */
