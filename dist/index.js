@@ -34,6 +34,7 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const helmet_1 = __importDefault(require("helmet"));
 const items_router_1 = require("./items/items.router");
+const path_1 = __importDefault(require("path"));
 dotenv.config();
 /**
  * App Variables
@@ -50,13 +51,8 @@ app.use((0, helmet_1.default)());
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use("/api/menu/items", items_router_1.itemsRouter);
-app.set('views', './views');
-app.set('view engine', 'ejs');
 app.get('/', (req, res) => {
-    // res.status(200).json('Welcome, your app is working well');
-    res.render('homePage', {
-        message: 'Hello World'
-    });
+    res.sendFile(path_1.default.join(__dirname + '/../views/index.html'));
 });
 /**
  * Server Activation
