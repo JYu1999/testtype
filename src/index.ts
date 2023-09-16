@@ -30,9 +30,15 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 app.use("/api/menu/items", itemsRouter);
+app.set('views', './views');
+app.set('view engine', 'ejs');
+
 
 app.get('/', (req, res) => {
-    res.status(200).json('Welcome, your app is working well');
+    // res.status(200).json('Welcome, your app is working well');
+    res.render('homePage', {
+        message: 'Hello World'
+    })
 })
 
 /**
